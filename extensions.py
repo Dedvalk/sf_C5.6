@@ -2,6 +2,7 @@ import requests
 from config import URL, DATA
 
 class Converter:
+    
     @staticmethod
     def get_price(source, dest, volume):
         base = DATA.get(source)
@@ -19,11 +20,6 @@ class Converter:
         req = requests.get(URL, params=data).json()
         return float(req[quote])*amount
 
-    @staticmethod
-    def send_req(base, quote):
-        data = {'fsym': base, 'tsyms': quote}
-        req = requests.get(URL, params=data).json()
-        return req[quote]
-
 class APIException(Exception):
+    
     pass
